@@ -121,3 +121,20 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'account.User'
+
+# JWTの設定
+JWT_AUTH = {
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',
+}
+
+
+REST_FRAMEWORK = { 
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),  
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),  
+    'NON_FIELD_ERRORS_KEY': 'detail',
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+}
